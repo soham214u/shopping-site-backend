@@ -2,11 +2,12 @@ const ProductModel = require("../models/product");
 
 exports.createProduct = async (req, res) => {
   try {
-    const { title, description, price, imgUrl } = req.body;
+    const { title, description, category, price, imgUrl } = req.body;
 
     let newProduct = new ProductModel({
       title,
       description,
+      category,
       price,
       imgUrl,
     });
@@ -59,12 +60,13 @@ exports.deleteProduct = async (req, res) => {
 
 exports.updateProduct = async (req, res) => {
   try {
-    const { title, description, price, imgUrl } = req.body;
+    const { title, description, category, price, imgUrl } = req.body;
     const productId = req.params.id;
 
     let updatedProduct = new ProductModel({
       title,
       description,
+      category,
       price,
       imgUrl,
       _id: productId,
@@ -104,11 +106,11 @@ exports.getRandomProducts = async (req, res) => {
 
 
 
-exports.smartphonesProduct = async (req, res) => {
+exports.categoryOneProduct = async (req, res) => {
   try {
-    const smartphonesProduct = await ProductModel.find({ description: "Smartphone" });
+    const categoryOneProduct = await ProductModel.find({ category: "Mobiles" });
 
-    res.status(200).json(smartphonesProduct);
+    res.status(200).json(categoryOneProduct);
   } catch (error) {
     res.status(500).json({ error: error.message });
   }
@@ -116,11 +118,11 @@ exports.smartphonesProduct = async (req, res) => {
 
 
 
-exports.headphonesProduct = async (req, res) => {
+exports.categoryTwoProduct = async (req, res) => {
   try {
-    const headphonesProduct = await ProductModel.find({ description: "Headphone"});
+    const categoryTwoProduct = await ProductModel.find({ category: "Headphones"});
 
-    res.status(200).json(headphonesProduct);
+    res.status(200).json(categoryTwoProduct);
   } catch (e) {
     res.status(500).json({ error: e.message });
   }
@@ -128,11 +130,11 @@ exports.headphonesProduct = async (req, res) => {
 
 
 
-exports.smartwatchesProduct = async (req, res) => {
+exports.categoryThreeProduct = async (req, res) => {
   try {
-    const smartwatchesProduct = await ProductModel.find({ description: "Smartwatch"});
+    const categoryThreeProduct = await ProductModel.find({ category: "Smartwatches"});
 
-    res.status(200).json(smartwatchesProduct);
+    res.status(200).json(categoryThreeProduct);
   } catch (e) {
     res.status(500).json({ error: e.message });
   }

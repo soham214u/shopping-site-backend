@@ -2,14 +2,13 @@ const UserModel = require("../models/user");
 
 exports.createUser = async (req, res) => {
   try {
-    const { firstName, lastName, phone, emailId, imgUrl } = req.body;
+    const { firstName, lastName, emailId, password } = req.body;
 
     let newUser = new UserModel ({
       firstName,
       lastName,
-      phone,
       emailId,
-      imgUrl,
+      password,
     })
 
     newUser = await newUser.save();
@@ -43,14 +42,14 @@ exports.deleteUser = async (req, res) => {
 
 exports.updateUser = async (req, res) => {
   try {
-    const { firstName, lastName, phone, emailId, imgUrl } = req.body;
+    const { firstName, lastName, password, emailId, imgUrl } = req.body;
 
     const userId = req.params.id;
 
     let updatedUser = new UserModel ({
       firstName,
       lastName,
-      phone,
+      password,
       emailId,
       imgUrl,
       _id: userId,

@@ -16,10 +16,10 @@ router.put("/products/:id", productController.updateProduct);
 
 router.get("/product", productController.getRandomProducts);
 
-router.get("/smartphones", productController.smartphonesProduct);
+router.get("/mobiles", productController.categoryOneProduct);
 
-router.get("/headphones", productController.headphonesProduct);
+router.get("/headphones", productController.categoryTwoProduct);
 
-router.get("/smartwatches", productController.smartwatchesProduct);
+router.get("/smartwatches", productController.categoryThreeProduct);
 
 module.exports = router;
